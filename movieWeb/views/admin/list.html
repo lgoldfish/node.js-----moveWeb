@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>影片列表列</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+</head>
+<body>
+	 <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+	  <div class="container">
+	   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	  <ul class="nav navbar-nav">
+	        <li class="active"><a href="/">影片首页 <span class="sr-only">(current)</span></a><li>
+	        <li><a href="/users/upload">影片添加页</a></li>
+	        <li><a href="/users/list">影片列表页</a></li>
+	      </ul>
+	      </div>
+	  	</div>
+	</nav>
+	<div class="container" style="margin-top: 70px">
+		<table class="table table-hover">
+			<tr class="info">
+				<th>序号</th>
+				<th>影片海报</th>
+				<th>电影名称</th>
+				<th>导演</th>
+				<th>主演</th>
+				<th>删除/修改</th>
+			</tr>
+			<%movies.forEach((movie,index)=>{%>
+				<tr>
+				  <td class="active"><%=index+1%></td>
+				  <td class="success"><%=movie.name%></td>
+				  <td class="warning"><img  class="img-responsive" style="width: 150px" src="/images/<%=movie.image%>" alt="..."></td>
+				  <td class="danger"><%=movie.doctor%></td>
+				  <td class="active"><%=movie.actor%></td>
+				  <td class="info">
+			  	<a href="/users/list/remove?movieid=<%=movie._id%>&imageid=<%=movie.image%>" class="btn btn-primary  active" role="button">删除本影片</a> 
+			  	<a style="margin-top: 10px" href="/users/list/update/<%=movie._id%>" class="btn btn-primary btn-danger active" role="button">修改影片信息</a>
+			  </td>
+			</tr>
+			<%})%>
+		</table>
+	</div>
+</body>
+</html>
